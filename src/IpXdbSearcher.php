@@ -4,7 +4,7 @@
 
 namespace Pangongzi\Ip;
 
-class XdbSearcher
+class IpXdbSearcher
 {
   public const HeaderInfoLength = 256;
   public const VectorIndexRows = 256;
@@ -39,7 +39,7 @@ class XdbSearcher
    * 完全基于文件的查询
    * @throws \Exception
    */
-  public static function newWithFileOnly($dbFile)
+  public static function newWithFileOnly($dbFile = null)
   {
     return new XdbSearcher($dbFile, null, null);
   }
@@ -48,7 +48,7 @@ class XdbSearcher
    * 缓存 VectorIndex 索引
    * @throws \Exception
    */
-  public static function newWithVectorIndex($dbFile, $vIndex)
+  public static function newWithVectorIndex($dbFile = null, $vIndex)
   {
     return new XdbSearcher($dbFile, $vIndex);
   }
@@ -103,6 +103,7 @@ class XdbSearcher
   }
 
   /**
+   * 中国|0|浙江省|绍兴市|电信
    * find the region info for the specified ip address
    * @throws \Exception
    */
