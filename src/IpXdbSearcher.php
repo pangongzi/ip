@@ -28,6 +28,9 @@ class IpXdbSearcher
   private $contentBuff = null;
 
 
+  // 单例实例
+  private static $instance = null;
+
 
   // 默认数据
   private const DATA_FILE = __DIR__ . '/data/ip2region.xdb';
@@ -41,7 +44,7 @@ class IpXdbSearcher
    */
   public static function newWithFileOnly($dbFile = null)
   {
-    return new XdbSearcher($dbFile, null, null);
+    return new self($dbFile, null, null);
   }
 
   /**
@@ -50,7 +53,7 @@ class IpXdbSearcher
    */
   public static function newWithVectorIndex($dbFile = null, $vIndex)
   {
-    return new XdbSearcher($dbFile, $vIndex);
+    return new self($dbFile, $vIndex);
   }
 
   /**
@@ -58,10 +61,21 @@ class IpXdbSearcher
    */
   public static function newWithBuffer($cBuff)
   {
-    return new XdbSearcher(null, null, $cBuff);
+    return new self(null, null, $cBuff);
   }
 
   // --- End of static creator
+
+
+  // 获取单例实例的方法
+  public static function getInstance($dbFile = null, $vectorIndex = null, $cBuff = null)
+  {
+    if (self::$instance === null) {
+      self::$instance = new self($dbFile, $vectorIndex, $cBuff);
+    }
+    return self::$instance;
+  }
+
 
   /**
    * initialize the xdb searcher
