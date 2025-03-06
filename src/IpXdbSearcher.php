@@ -231,6 +231,27 @@ class IpXdbSearcher
     return $buff;
   }
 
+
+  /**
+   * 格式化 ip 数据 中国|0|浙江省|绍兴市|电信
+   * @param string $ipData
+   * @return array {city: string, country: string, isp: string, province: string, region: string, type: string}
+   */
+  public function format($ipData)
+  {
+    $itemArr = explode('|', $ipData);
+    // 返回目标数组结构
+    return [
+      'country' => $itemArr[0] ?? '',       // 国家 中国
+      'region' => $itemArr[1] ?? '',        // 大区 0
+      'province' => $itemArr[2] ?? '',      // 省份 浙江省
+      'city' => $itemArr[3] ?? '',          // 城市 绍兴市
+      'isp' => $itemArr[4] ?? ''            // 运营商
+    ];
+  }
+
+
+
   // --- static util functions ----
 
   // convert a string ip to long
