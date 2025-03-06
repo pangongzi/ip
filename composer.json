@@ -1,0 +1,32 @@
+{
+  "name": "pangongzi/ip",
+  "description": "find region by ip",
+  "type": "library",
+  "require": {
+    "php": ">=7.0"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Pangongzi\\Ip\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "pangongzi",
+      "email": "pangongzi1989@gmail.com",
+      "homepage": "https://i.postimg.cc/hvvW2WWw/wechat.jpg"
+    }
+  ],
+  "config": {
+    "preferred-install": "dist",
+    "optimize-autoloader": true
+  },
+  "minimum-stability": "stable",
+  "homepage": "https://github.com/pangongzi/ip",
+  "keywords": [
+    "php",
+    "ip",
+    "location"
+  ]
+}
