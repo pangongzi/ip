@@ -51,7 +51,7 @@ class IpXdbSearcher
    * 缓存 VectorIndex 索引
    * @throws \Exception
    */
-  public static function newWithVectorIndex($dbFile = null, $vIndex)
+  public static function newWithVectorIndex($dbFile = null, $vIndex = null)
   {
     return new self($dbFile, $vIndex);
   }
